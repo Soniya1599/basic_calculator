@@ -1,0 +1,59 @@
+/* All elements, before elements, after elements - setting box-sizing to border box so that it's easier to size our elements. */
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: sans-serif;  /* Look into font-family*/
+    font-weight: normal;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right, #00AAFF, #00FF6C); /* we are apllying this color to the right so first color will be in left and another in right*/
+}
+
+.calculator-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center; /* Because we want align all the content*/
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px); /* minmax(120px,auto) is used for first row which is output row because its height can be increased if number increases.*/
+}
+
+.calculator-grid > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, .75); /* look at rgba values, how to set them ?*/
+} 
+
+.calculator-grid > button:hover{
+    background-color: rgba(255, 255, 255, .9);
+}
+
+.span-two {
+    grid-column: span 2;
+}
+
+.output {
+    grid-column: 1 / -1; /* Trick to we are gonna go from colun no 1 to column no -1 which is the last column, it will fill the complete columnas whole.*/
+    background-color: rgba(0, 0, 0, .75);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding: 10px;
+    word-wrap: break-word; /* If the numbers gets too long we need to wrap it down that why using word-wrap*/
+    word-break: break-all; /* If a number became too long it will take it to net line*/
+}
+
+.output .previous-operand {
+    color: rgba(255, 255, 255, .75);
+    font-size: 1.5rem;
+}
+
+.output .current-operand {
+    color: #FFFFFF;
+    font-size: 2.5rem;
+}
